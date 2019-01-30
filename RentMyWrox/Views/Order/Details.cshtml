@@ -1,0 +1,49 @@
+﻿@model RentMyWrox.Models.Order
+@{ 
+	RentMyWrox.Models.ApplicationUser au = ViewBag.ApplicationUser;
+}
+<div>
+	<h4>Order #@Model.Id</h4>
+	<hr />
+	<div>@au.FirstName @au.LastName</div>
+	<div>@Html.DisplayFor(user => au.Address)</div>
+	<br />
+	<div>
+		<span class="leftside">
+			@Html.DisplayNameFor(model => model.OrderDate)
+		</span>
+		<span class="rightside">
+			@Html.DisplayFor(model => model.OrderDate)
+		</span>
+	</div>
+	<div>
+		<span class="leftside">
+			@Html.DisplayNameFor(model => model.PickupDate)
+		</span>
+		<span class="rightside">
+			@Html.DisplayFor(model => model.PickupDate)
+		</span>
+	</div>
+	<br/>
+	<table class="table" width="600">
+		<tr>
+			<th>Quantity</th>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+		@foreach(var item in Model.OrderDetails)
+		{
+			<tr>
+				<td align="center">
+					@Html.DisplayFor(modelItem => item.Quantity)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Item.Name)
+				</td>
+				<td align="right">
+					@item.PricePaidEach.ToString("C")
+				</td>
+			</tr>
+		}
+	</table>
+</div>

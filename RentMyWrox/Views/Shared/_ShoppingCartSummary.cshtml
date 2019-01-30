@@ -1,0 +1,23 @@
+﻿@model RentMyWrox.Models.ShoppingCartSummary
+@{
+	string display;
+}
+@if (Model != null && Model.Quantity > 0)
+{
+	display = string.Format("{0}{1}ou have {2} item(s) in your cart with a value of {3}",
+		Model.UserDisplayName,
+		string.IsNullOrWhiteSpace(Model.UserDisplayName) ? " Y" : ", y",
+		Model.Quantity,
+		Model.TotalValue.ToString("C")
+		);
+	<span>@display</span>
+	<a class="checkout" href="\ShoppingCart\checkout">Check Out</a>
+}
+else
+{
+	display = string.Format("{0}{1}our cart is empty",
+		Model.UserDisplayName,
+		string.IsNullOrWhiteSpace(Model.UserDisplayName) ? " Y" : ", y"
+		);
+	<span>@display</span>
+}

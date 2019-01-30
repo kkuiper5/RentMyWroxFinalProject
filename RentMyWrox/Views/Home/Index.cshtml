@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div class="header boxShadow">
+	<h1 class="title">Something Borrowed</h1>
+	<div class="subtitle">Why spend hundreds or thousands on dress you wear only once?</div>
+	<div class="subtitle">Rent your dream wedding dress from us to save money and still have an amazing day!</div>
+</div>
+<div class="page">
+	<h2 class="productTitle">Save $600!</h2>
+	<h2 class="productTitle">White by Vera Wang Bell Sleeve Lace Wedding Dress</h2>
+	<img src="../../Content/Images/BellSleeveLace.jpg" width="204" height="307" alt="White by Vera Wang Image" />
+	<div class="msrp">
+		MSRP: $1198-$1298
+	</div>
+	<div class="price">
+		Rental Cost: $500
+	</div>
+	@Html.ActionLink("Full details", "../Item/Details/1", new { @class = "inlinelink" })
+	<br/>
+	<br/>
+	@Html.ActionLink("See all dresses", "../Item/Index", new {@class = "inlinelink"})
+</div>
+

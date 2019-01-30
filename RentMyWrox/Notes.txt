@@ -1,0 +1,4 @@
+﻿Things to fix in CISP238 Project:
+-20 orders
+-Notifications (admin and non-admin)
+-No empty tables

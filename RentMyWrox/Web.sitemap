@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="~/Admin/" title="Admin Home" description="Home page for the admin section">
+    <siteMapNode url="~/Item/Index" title="Website Home" description="Home page for the website"/>
+		<siteMapNode url="~/Admin/Default" title="Admin Home" description="Home page for the admin section"/>
+		<siteMapNode url="~/Admin/ItemList" title="Items List" description="List of available items"/>
+		<siteMapNode url="~/Admin/OrderList" title="Order List" description="List of orders"/>
+		<siteMapNode url="~/Admin/UserList" title="User List" description="List of users"/>
+		<siteMapNode url="~/Admin/ManageItem" title="Manage Item" description="Page to edit items"/>
+		<siteMapNode url="~/Admin/ManageHobby" title="Manage Hobby" description="Page to edit hobbies"/>
+	</siteMapNode>
+</siteMap>

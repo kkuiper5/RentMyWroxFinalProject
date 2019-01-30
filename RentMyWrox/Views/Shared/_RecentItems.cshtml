@@ -1,0 +1,23 @@
+﻿@model List<RentMyWrox.Models.Item>
+
+@if (Model != null && Model.Count > 0)
+{
+	<div class="recentItemsRow">
+		<span id="recentItemsTitle">Items you have recently reviewed</span>
+
+		@foreach (var item in Model)
+		{
+			<div class="recentItem">
+				<span class="recentItemsName">@item.Name</span>
+				<span class="recentItemsDescription">
+					@if (item.Description.Length > 250)
+					{<span>@item.Description.Substring(0, 250)...</span> }
+				else
+				{ @item.Description}
+				</span>
+			</div>
+
+		}
+	</div>
+
+}

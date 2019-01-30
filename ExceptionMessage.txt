@@ -1,0 +1,9 @@
+The view 'Details' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/shoppingcart/Details.aspx
+~/Views/shoppingcart/Details.ascx
+~/Views/Shared/Details.aspx
+~/Views/Shared/Details.ascx
+~/Views/shoppingcart/Details.cshtml
+~/Views/shoppingcart/Details.vbhtml
+~/Views/Shared/Details.cshtml
+~/Views/Shared/Details.vbhtml

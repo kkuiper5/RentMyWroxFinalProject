@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RentMyWrox.Models.HobbyReportItem>
+	@{ 
+		ViewBag.Title = "Hobby Report";
+	}
+<h2>HobbyReport</h2>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Name)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.BirthRange)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Total)
+		</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Name)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.BirthRange)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Total)
+			</td>
+		</tr>
+	}
+</table>
+

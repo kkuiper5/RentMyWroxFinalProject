@@ -1,0 +1,75 @@
+﻿@using RentMyWrox.Models
+@{ 
+	bool userIsCheckingOut = ViewBag.AmCheckingOut == null ? false : ViewBag.AmCheckingOut;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	<link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="~/Content/RentMyWrox.css" rel="stylesheet" type="text/css" />
+	<script language="javascript" type="text/javascript" src="~/Scripts/jquery-1.12.4.js"></script>
+	<script language="javascript" type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.js"></script>
+	@Scripts.Render("~/bundles/modernizr")
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+</head>
+<body>
+	<div id="header">
+		<img src="/Content/Images/Logo.jpg" width="400" height="100" alt="Something Borrowed" />
+		@if (!userIsCheckingOut)
+		{
+			<span id="shoppingcartsummary">@Html.Action("Index", "ShoppingCart")</span>
+		}
+	</div>
+	<div id="nav">
+		<div id="LeftNavigation">
+			<ul class="level1">
+				<li><a href="~/Item/Index" class="level1">Home</a></li>
+				<li><a class="level1" href="~/Home/ContactUs">Contact Us</a></li>
+				<li><a class="level1" href="~/Home/About">About Us</a></li>
+				@if (!User.Identity.IsAuthenticated)
+				{
+					<li><a class="level1" href="~/Account/Login">Login</a></li>
+				}
+				else
+				{
+					<li>&nbsp;</li>
+				}
+				@if (User.IsInRole("Admin"))
+				{
+					<li><a class="level1" href="~/Admin/Default">Admin Home</a></li>
+					<li><a class="level1" href="~/Admin/ItemList">Items List</a></li>
+					<li><a class="level1" href="~/Admin/OrderList">Order List</a></li>
+					<li><a class="level1" href="~/Admin/UserList">User List</a></li>
+					<li><a class="level1" href="~/Admin/ManageHobby">Manage Hobby</a></li>
+					<li><a class="level1" href="~/Admin/ManageItem">Manage Item</a></li>
+				}
+			</ul>
+			<br />
+			<div id="storeHoursMessage"></div>
+			@Html.Action("NonAdminSnippet", "Notifications")
+		</div>
+	</div>
+	<div id="section">
+		@RenderBody()
+		@if (!userIsCheckingOut)
+		{
+			<span>@Html.Action("Recent", "Item")</span>
+		}
+	</div>
+	<div id="specialnotes">
+		@RenderSection("SpecialNotes", false)
+	</div>
+	<div id="footer">
+		<p>&copy; @DateTime.Now.Year - Something Borrowed</p>
+	</div>
+	@Scripts.Render("~/bundles/common")
+	@RenderSection("scripts", required: false)
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".editordatepicker").datepicker();
+		});
+	</script>
+</body>
+</html>

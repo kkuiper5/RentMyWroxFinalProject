@@ -1,0 +1,81 @@
+﻿@model RentMyWrox.Models.Item
+
+@if (Model == null)
+{
+	<p>That is not a valid item.</p>
+}
+else
+{
+	ViewBag.Title = Model.Name;
+
+	<div>
+		<div class="detailtitle">
+			<span class="productname">@Model.Name</span>
+			<span class="listprice">@Model.Cost.ToString("C")</span>
+		</div>
+		<div>
+			@if (!string.IsNullOrWhiteSpace(Model.Picture))
+			{
+				<img src="@Url.Content(Model.Picture)" class="textwrapleft" runat="server" height="300" />
+			}
+			<p>
+				@{
+					string description = Model.Description;
+					string[] details = description.Split('*');
+				}
+				@details[0]
+			</p>
+			<ul class="squarelist">
+				@for(int i = 1; i < details.Length; i++)
+				{
+					<li class="details">
+						@details[i]
+					</li>
+				}
+			</ul>
+		</div>
+
+		@if (Model.IsAvailable)
+		{
+			@Ajax.ActionLink("Add to Cart",
+				"AddToCart",
+				"ShoppingCart",
+				new {@Model.Id},
+				new AjaxOptions
+				{
+					UpdateTargetId = "shoppingcartsummary",
+					InsertionMode = InsertionMode.Replace,
+					HttpMethod = "GET",
+					OnBegin = "fadeOutShoppingCartSummary",
+					OnSuccess = "fadeInShoppingCartSummary"
+				},
+				new {@class = "inlinelink"})
+		}	
+		else
+		{
+			<span class="checkedout">
+				This article was checked out on @Model.CheckedOut.Value.ToString("d")
+				and is due back on @Model.DueBack.Value.ToString("d").
+			</span>
+		}
+	</div>
+}
+
+@section Scripts {
+	<script>
+		var isLarge = false;
+
+		$(".textwrapleft").click(
+			function() {
+				if (!isLarge) {
+					isLarge = true;
+					$(this).css('height', '500');
+					$(this).attr("title", "Click to shrink");
+				} else {
+					isLarge = false;
+					$(this).css('height', '300');
+					$(this).attr("title", "Click to expand");
+				}
+			});
+	</script>
+}

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<RentMyWrox.Models.UserDemographics>
+
+@{
+	Layout = "../Shared/_MVCLayout.cshtml";
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Birthdate)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Gender)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.MaritalStatus)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DateMovedIntoArea)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.OwnHome)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TotalPeopleInHome)
+		</th>
+		<th></th>
+	</tr>
+	@if (Model != null)
+	{
+		foreach (var item in Model)
+		{
+			<tr class="rows">
+				<td>
+					@Html.DisplayFor(modelItem => item.Birthdate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Gender)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.MaritalStatus)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DateMovedIntoArea)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.OwnHome)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TotalPeopleInHome)
+				</td>
+				<td>
+					@Html.ActionLink("Edit", "Edit", new { id=item.Id })
+					@Html.ActionLink("Details", "Details", new { id = item.Id }) 
+					@Html.ActionLink("Delete", "Delete", new { id = item.Id })
+				</td>
+			</tr>			
+		}
+	}
+
+</table>
+

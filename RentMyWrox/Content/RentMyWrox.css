@@ -1,0 +1,267 @@
+﻿body {
+	font-family: Lucida Sans, Lucida Sans Regular, Lucida Grande, Lucida Sans Unicode, Geneva, Verdana, sans-serif;
+}
+
+#header {
+	/*background-color: #C40D42;*/ background-color: #24536d;
+	color: white;
+	text-align: center;
+	padding: 5px;
+}
+
+#nav {
+	line-height: 30px;
+	background-color: #eeeeee;
+	width: 130px;
+	float: left;
+	padding: 5px;
+}
+
+#section {
+	width: 750px;
+	float: left;
+	padding: 10px;
+}
+
+#footer {
+	/*background-color: #C40D42;*/ background-color: #24536d;
+	color: white;
+	clear: both;
+	text-align: center;
+	padding: 5px;
+}
+
+.h3 {
+	margin-left: 20px;
+}
+
+.dataentry input {
+	width: 250px;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+.dataentry textarea {
+	width: 250px;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+
+.dataentry label {
+	width: 130px;
+	margin-left: 20px;
+	margin-top: 15px;
+	display: inline-block;
+	text-align: right;
+}
+
+#fuPicture {
+	margin-top: -20px;
+	margin-left: 20px;
+	width: 200px;
+}
+/*.table {
+    /*width: 100%;
+    margin-bottom: 20px;
+}
+.table th {
+    font-size: 12px;
+}*/
+
+#LeftNavigation ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+	width:auto;
+	font-size: 15px;
+}
+
+#LeftNavigation a {
+	/*color: #C40D42;*/ color: #24536d;
+	text-decoration: none;
+	white-space: nowrap;
+	display: block;
+}
+
+ul.level1 .selected {
+	/* Defines the appearance of active menu items */
+	background-color: white;
+	/*color: #C40D42;*/ color: #24536d;
+	padding-right: 8px;
+	padding-left: 8px;
+}
+
+a.level1 {
+	/* Adds some white space to the left of the main menu item text.
+		!important is used to overrule the in-line CSS that the menu generates */
+	padding-left: 5px !important;
+	padding-right: 5px;
+}
+
+a.level1:hover {
+	/* Defines the hover style for the main and sub items. */
+	background-color: #509EE7;
+}
+
+.productname {
+	/*color: #C40D42;*/ color: #24536d;
+	font-size: x-large;
+}
+
+.inlinelink {
+	/*margin-left:25px;*/
+	/*color: #C40D42;*/ color: #24536d;
+}
+
+.listprice {
+	float: right;
+	/*color: #C40D42;*/ color: #24536d;
+	font-size: x-large;
+	text-align: right;
+}
+
+.listtitle {
+	/*background-color: #F9B6C9;*/ background-color: #EEEEEE;
+	padding: 5px;
+	width: 750px;
+}
+
+.detailtitle {
+	/*background-color: #F9B6C9;*/ background-color: #EEEEEE;
+	padding: 5px;
+	width: 950px;
+}
+
+.textwrapright {
+	float: right;
+	margin: 10px;
+}
+
+.textwrapleft {
+	padding: 5px 15px 15px 15px;
+	float: left;
+}
+
+.checkedout {
+	font-weight: bold;
+	/*color: #C40D42;*/ color: #24536d;
+}
+
+.paginationline {
+	font-size: medium;
+}
+
+.leftside {
+	text-align: left;
+}
+
+.rightside {
+	margin-left: 50px;
+	text-align: right;
+}
+
+h1.title {
+	margin: 10px 0px 20px;
+	color: rgb(36,83,109);
+	font-size: 42px;
+}
+
+h2.title {
+	margin: 20px 0px 20px;
+	color: rgb(36,83,109);
+	font-size: 32px;
+}
+
+.listing {
+	height: 240px;
+}
+
+ul.squarelist {
+	list-style-type: square;
+	list-style-position: outside;
+	padding-left: 265px;
+}
+
+li.details {
+	padding-left: 7px;
+}
+
+.progressnotification {
+    height: 30px;
+    width: 500px;
+    background-color: #FDE9EF;
+    padding-left: 40px;
+    line-height: 32px;
+    color: #24536d;
+}
+
+.NotificationTitle {
+    color:#509ee7
+}
+
+.moveLeft {
+    margin-left: 15px;
+}
+
+#shoppingcartsummary {
+    vertical-align: middle;
+    text-align: right;
+    margin-left: 100px;
+}
+
+.storeOpen {
+    background-color: green;
+    color: white;
+    text-align: center;
+    font-size: small;
+    font-weight: bold;
+    width: 109px;
+}
+
+.storeClosed {
+    background-color: #F8B6C9;
+    color: red;
+    text-align: center;
+    font-size: small;
+    font-weight: bold;
+    width: 109px;
+}
+
+.checkout {
+    margin-left: 15px;
+    color: white;
+    font-size: small;
+}
+
+#recentItemsTitle {
+    background-color: rgb(220,236,239);
+    color: #24536d;
+    font-weight: 800;
+    width: 900px;
+    margin-top: 15px;
+    display: block;
+    padding: 10px;
+    float: left;
+}
+
+.recentItemsName {
+    color: #24536d;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.recentItem {
+    padding: 10px;
+    width: 275px;
+    float: left;
+}
+
+.recentItemsDescription {
+    color: #24536d;
+    float: left;
+    font-size: 12px;
+}
+
+.recentItemsRow {
+    width: 900px;
+}

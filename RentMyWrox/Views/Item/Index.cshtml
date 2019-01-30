@@ -1,0 +1,91 @@
+﻿@model IEnumerable<RentMyWrox.Models.Item>
+@{
+	const string selectedText = "selected";
+	ViewBag.Title = "Index";
+	int itemCount = ViewBag.ItemCount;
+	int pageSize = ViewBag.PageSize;
+	int pageNumber = ViewBag.PageNumber;
+	int fullPageCount = (itemCount + pageSize - 1) / pageSize;
+	string sortExp = ViewBag.SortExpression;
+}
+
+<h2 class="title">Our Dress Selection</h2>
+<form>
+	<div>
+		<div class="paginationline">
+			<span class="leftside">
+				Sort by:
+				<select name="sortExp" onchange='if(this.value !="@sortExp"){this.form.submit();}'>
+					<option value="name_asc" @if (sortExp == "name_asc") { @selectedText }>	Name</option>
+					<option value="name_desc" @if (sortExp == "name_desc") { @selectedText }>Name (Z to A)</option>
+					<option value="cost_asc" @if (sortExp == "cost_asc") { @selectedText }>Price</option>
+					<option value="cost_desc" @if (sortExp == "cost_desc") { @selectedText }>Price (high to low)</option>
+				</select>
+			</span>
+			<span class="rightside">
+				@if (pageNumber > 1) // means there are additional pages backwards
+				{
+					<a href="?pageNumber=@(pageNumber - 1)&pageQty=@pageSize&sortExp=@sortExp">Previous Page</a>
+				}
+
+				You are currently on Page @pageNumber of @fullPageCount
+
+				@if (fullPageCount > pageNumber) // means that there are pages forward
+				{
+					<a href="?pageNumber=@(pageNumber + 1)&pageQty=@pageSize&sortExp=@sortExp">Next Page</a>
+				}
+			</span>
+		</div>
+	</div>
+</form>
+<br />
+
+@foreach (var item in Model)
+{
+	<div class="listing listitem">
+		<div class="listtitle">
+			<span class="productname">@item.Name</span>
+			<span class="listprice">@item.Cost.ToString("C")</span>
+		</div>
+		<img src="@Url.Content(item.Picture)" class="textwrapleft" runat="server" height="180" />
+		@*<p style="margin-top: 20px;"> </p>*@
+		<p>
+			@{ 
+				string description = item.Description;
+				string[] details = description.Split('*');
+			}
+			@if (details[0].Length < 250)
+			{<span>@details[0]</span> }
+			else if (details[0].Length > 250)
+			{ <span>@details[0].Substring(0, 250)...</span>}
+		</p>
+		@Html.ActionLink("Full details", "Details", new { @item.Id }, new { @class = "inlinelink" })  |
+		@Ajax.ActionLink("Add to Cart",
+			"AddToCart",
+			"ShoppingCart",
+			new {@item.Id},
+			new AjaxOptions
+			{
+				UpdateTargetId = "shoppingcartsummary",
+				InsertionMode = InsertionMode.Replace,
+				HttpMethod = "GET",
+				OnBegin = "fadeOutShoppingCartSummary",
+				OnSuccess = "fadeInShoppingCartSummary"
+			},
+			new {@class = "inlinelink"})
+		<br />
+		<br />
+	</div>
+}
+
+@section Scripts {
+	<script>
+		$(".listitem").hover(
+			function() {
+				$(this).css('background-color', '#dcecef');
+			},
+			function() {
+				$(this).css('background-color', 'white');
+			});
+	</script>
+}

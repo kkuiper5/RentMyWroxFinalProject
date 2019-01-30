@@ -1,0 +1,32 @@
+﻿@using RentMyWrox.Models
+@model RentMyWrox.Models.Order
+@{ 
+	RentMyWrox.Models.ApplicationUser au = ViewBag.ApplicationUser;
+}
+<h1>Checkout</h1>
+@using (Html.BeginForm())
+{
+	<div>@au.FirstName @au.LastName</div>
+	<div>@Html.DisplayFor(user => au.Address)</div>
+	<br />
+	<span>Enter your pickup date: </span> @Html.EditorFor(model => model.PickupDate)
+	<br />
+	<table class="table" width="600">
+		<tr>
+			<th>Quantity</th>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+	@foreach (var item in Model.OrderDetails)
+	{
+		<tr>
+			<td align="center">
+				<input type="text" value="@item.Quantity" id="@item.Item.Id" name="@item.Item.Name" style="width:25px"/>
+			</td>
+			<td>@Html.DisplayFor(modelItem => item.Item.Name)</td>
+			<td align="right">@item.PricePaidEach.ToString("C")</td>
+		</tr>
+	}
+	</table>
+	<p><input type="submit" value="Complete Order" class="btn btn-default" /> </p>
+}
